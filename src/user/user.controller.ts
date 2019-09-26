@@ -1,6 +1,7 @@
 import {
-  Body, Controller, Get, Post,
+  Body, Controller, Get, Param, Post, Query,
 } from '@nestjs/common';
+import { Types } from 'mongoose';
 import { UserService } from './user.service';
 import { User } from './interfaces/user.interface';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -16,8 +17,19 @@ export class UserController {
     this.userService.create(createUserDto);
   }
 
-  @Get()
-  async findAll(): Promise<User[]> {
-    return this.userService.findAll();
+  @Get('all')
+  async getAll(): Promise<User[]> {
+    return this.userService.find();
+  }
+
+  @Get('search')
+  async findAll(@Query() query: any): Promise<User[]> {
+    console.log(query);
+    return this.userService.find(query);
+  }
+
+  @Get(':id')
+  async find(@Param('id') id: string): Promise<User | null> {
+    return this.userService.findById(Types.ObjectId(id));
   }
 }
