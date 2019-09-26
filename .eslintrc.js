@@ -14,5 +14,7 @@ module.exports = {
     "max-len": ["error", 120],
     "no-console": "off",
     "import/prefer-default-export": "off",
+    "no-empty-function": "off",
+    "no-useless-constructor": "off",
   },
 };
