@@ -2,6 +2,7 @@ import {
   Body, Controller, Delete, Get, Param, Post, Put, Query,
 } from '@nestjs/common';
 import { Types } from 'mongoose';
+import { AuthGuard } from '@nestjs/passport';
 import { UserService } from './user.service';
 import { User } from './interfaces/user.interface';
 import { UserDto } from './dto/user.dto';
@@ -17,6 +18,8 @@ export class UserController {
     this.userService.create(createUserDto);
   }
 
+  // TODO: add guards
+  // @UseGuards(AuthGuard('jwt'))
   @Get('all')
   async getAll(): Promise<User[]> {
     return this.userService.find();
@@ -24,7 +27,6 @@ export class UserController {
 
   @Get('search')
   async findAll(@Query() query: any): Promise<User[]> {
-    console.log(query);
     return this.userService.find(query);
   }
 
