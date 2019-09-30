@@ -18,4 +18,8 @@ export class UserDto {
   readonly height: Number | undefined;
 
   readonly goal: Number | undefined;
+
+  readonly presets: Array<String> | undefined;
+
+  readonly trainings: Array<String> | undefined;
 }

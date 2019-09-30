@@ -11,4 +11,6 @@ export interface User extends Document {
   readonly weight: Number;
   readonly height: Number;
   readonly goal: Number;
+  readonly presets: Array<String>;
+  readonly trainings: Array<String>;
 }

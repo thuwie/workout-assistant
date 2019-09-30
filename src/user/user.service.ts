@@ -15,11 +15,11 @@ export class UserService {
   }
 
   async find(query?: Object): Promise<User[]> {
-    return this.UserModel.find(query).exec();
+    return this.UserModel.find(query).populate('trainings').populate('presets').exec();
   }
 
   async findById(id: Types.ObjectId): Promise<User | null> {
-    return this.UserModel.findById(id).exec();
+    return this.UserModel.findById(id).populate('trainings').populate('presets').exec();
   }
 
   async update(_id: Types.ObjectId, userDto: UserDto): Promise<User> {

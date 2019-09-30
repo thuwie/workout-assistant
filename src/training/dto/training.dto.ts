@@ -1,7 +1,7 @@
 export class TrainingDto {
-  readonly presetId: Number | undefined;
+  readonly presetId: String | undefined;
 
-  readonly userId: Number | undefined;
+  readonly userId: String | undefined;
 
   readonly name: String | undefined;
 

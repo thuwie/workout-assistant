@@ -1,8 +1,8 @@
 import { Document } from 'mongoose';
 
 export interface Training extends Document {
-  readonly presetId: Number;
-  readonly userId: Number;
+  readonly presetId: String;
+  readonly userId: String;
   readonly name: String;
   readonly placed: Array<Date>;
 }

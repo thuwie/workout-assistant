@@ -11,4 +11,6 @@ export const UserSchema = new Schema({
   weigth: Number,
   heigth: Number,
   goal: Number,
+  presets: [{ type: Schema.Types.ObjectId, ref: 'Preset' }],
+  trainings: [{ type: Schema.Types.ObjectId, ref: 'Training' }],
 });

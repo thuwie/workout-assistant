@@ -8,24 +8,35 @@ import { PresetDto } from './dto/preset.dto';
 export class PresetService {
   constructor(@InjectModel('Preset') private readonly PresetModel: Model<Preset>) {}
 
-  async create(createCatDto: PresetDto): Promise<Preset> {
-    const createdPreset = new this.PresetModel(createCatDto);
-    return createdPreset.save();
+  async create(presetDto: PresetDto): Promise<Preset> {
+    const createdPreset = new this.PresetModel(presetDto);
+    return createdPreset
+      .save();
   }
 
   async find(query?: Object): Promise<Preset[]> {
-    return this.PresetModel.find(query).exec();
+    return this.PresetModel
+      .find(query)
+      .populate('trainings')
+      .populate('exercises')
+      .exec();
   }
 
   async findById(id: Types.ObjectId): Promise<Preset | null> {
-    return this.PresetModel.findById(id).exec();
+    return this.PresetModel
+      .findById(id)
+      .populate('trainings')
+      .populate('exercises')
+      .exec();
   }
 
   async update(_id: Types.ObjectId, userDto: PresetDto): Promise<Preset> {
-    return this.PresetModel.updateOne({ _id }, userDto);
+    return this.PresetModel
+      .updateOne({ _id }, userDto);
   }
 
   async delete(_id: Types.ObjectId): Promise<object> {
-    return this.PresetModel.deleteOne({ _id });
+    return this.PresetModel
+      .deleteOne({ _id });
   }
 }

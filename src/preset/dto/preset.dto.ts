@@ -1,9 +1,9 @@
-import { Exercise } from '../interfaces/exercise.interface';
-
 export class PresetDto {
-  readonly userId: Number | undefined;
+  readonly userId: String | undefined;
 
   readonly name: String | undefined;
 
-  readonly exercises: Array<Exercise> | undefined;
+  readonly exercises: Array<String> | undefined;
+
+  readonly trainings: Array<String> | undefined;
 }

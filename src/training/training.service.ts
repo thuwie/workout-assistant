@@ -6,26 +6,36 @@ import { TrainingDto } from './dto/training.dto';
 
 @Injectable()
 export class TrainingService {
-  constructor(@InjectModel('Training') private readonly TrainingModel: Model<Training>) {}
-
-  async create(createCatDto: TrainingDto): Promise<Training> {
-    const createdTraining = new this.TrainingModel(createCatDto);
-    return createdTraining.save();
+  constructor(@InjectModel('Training') private readonly TrainingModel: Model<Training>) {
   }
 
+  async create(trainingDto: TrainingDto): Promise<Training> {
+    const createdTraining = new this.TrainingModel(trainingDto);
+    return createdTraining
+      .save();
+  }
+// TODO doesn't populate
   async find(query?: Object): Promise<Training[]> {
-    return this.TrainingModel.find(query).exec();
+    return this.TrainingModel
+      .find(query)
+      .populate('presets')
+      .exec();
   }
 
   async findById(id: Types.ObjectId): Promise<Training | null> {
-    return this.TrainingModel.findById(id).exec();
+    return this.TrainingModel
+      .findById(id)
+      .populate('presets')
+      .exec();
   }
 
   async update(_id: Types.ObjectId, userDto: TrainingDto): Promise<Training> {
-    return this.TrainingModel.updateOne({ _id }, userDto);
+    return this.TrainingModel
+      .updateOne({ _id }, userDto);
   }
 
   async delete(_id: Types.ObjectId): Promise<object> {
-    return this.TrainingModel.deleteOne({ _id });
+    return this.TrainingModel
+      .deleteOne({ _id });
   }
 }

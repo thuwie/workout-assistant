@@ -1,7 +1,8 @@
 import { Schema } from 'mongoose';
 
 export const PresetSchema = new Schema({
-  userId: Number,
+  userId: String,
   name: String,
-  exercises: Array,
+  exercises: [{ type: Schema.Types.ObjectId, ref: 'Exercise' }],
+  trainings: [{ type: Schema.Types.ObjectId, ref: 'Training' }],
 });
