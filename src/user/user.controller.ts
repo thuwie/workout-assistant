@@ -1,5 +1,5 @@
 import {
-  Body, Controller, Delete, Get, Param, Post, Put, Query,
+  Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards, Request,
 } from '@nestjs/common';
 import { Types } from 'mongoose';
 import { AuthGuard } from '@nestjs/passport';
@@ -18,8 +18,7 @@ export class UserController {
     this.userService.create(createUserDto);
   }
 
-  // TODO: add guards
-  // @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   @Get('all')
   async getAll(): Promise<User[]> {
     return this.userService.find();
