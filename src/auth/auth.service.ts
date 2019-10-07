@@ -14,7 +14,7 @@ export class AuthService {
     const user = await this.usersService.find({ username });
     // TODO: get rid of index?
     if (user && user[0].password === pass) {
-      const { email, ...result } = user[0];
+      const { email } = user[0];
       return { username, email };
     }
     return null;
