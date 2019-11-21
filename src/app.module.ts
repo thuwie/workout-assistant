@@ -14,7 +14,7 @@ import { ExerciseModule } from './exercise/exercise.module';
     imports: [ConfigModule],
     inject: [ConfigService],
     useFactory: async (config: ConfigService) => ({
-      uri: `${config.get('MONGO_URL')}/${config.get('MONGO_DB')})`,
+      uri: `${config.get('MONGO_URL')}/${config.get('MONGO_DB')}`,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }),

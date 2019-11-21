@@ -1,6 +1,9 @@
-import { Injectable, Inject, forwardRef } from '@nestjs/common';
+import {
+  Injectable, Inject, forwardRef, Body,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../user/user.service';
+import { UserDto } from '../user/dto/user.dto';
 
 @Injectable()
 export class AuthService {
@@ -21,9 +24,25 @@ export class AuthService {
   }
 
   async login(user: any) {
-    const jwtPayload = { username: user.username, email: user.email };
+    const { username, email } = user;
+    const jwtPayload = { username, email };
     return {
       access_token: this.jwtService.sign(jwtPayload),
     };
+  }
+
+  async signUp(@Body() createUserDto: UserDto) {
+    try {
+      const { username, email, password } = createUserDto;
+      if (password === null) { return null; }
+      const usr = await this.usersService.find({ $or: [{ username }, { email }] });
+      if (usr.length !== 0) { return null; }
+      await this.usersService.create(createUserDto);
+      const jwtPayload = { username, email };
+      return { access_token: this.jwtService.sign(jwtPayload) };
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
   }
 }
