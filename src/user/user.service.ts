@@ -18,6 +18,10 @@ export class UserService {
     return this.UserModel.find(query).populate('trainings').populate('presets').exec();
   }
 
+  async findOne(query?: Object): Promise<User | null> {
+    return this.UserModel.findOne(query).populate('trainings').populate('presets').exec();
+  }
+
   async findById(id: Types.ObjectId): Promise<User | null> {
     return this.UserModel.findById(id).populate('trainings').populate('presets').exec();
   }

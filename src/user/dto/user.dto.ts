@@ -1,7 +1,7 @@
 export class UserDto {
   readonly username: String | undefined;
 
-  readonly password: String | undefined;
+  password: String | undefined;
 
   readonly email: String | undefined;
 

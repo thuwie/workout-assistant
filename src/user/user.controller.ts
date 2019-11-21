@@ -7,7 +7,7 @@ import { UserService } from './user.service';
 import { User } from './interfaces/user.interface';
 import { UserDto } from './dto/user.dto';
 
-
+@UseGuards(AuthGuard('jwt'))
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {
