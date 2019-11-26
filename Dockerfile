@@ -12,5 +12,6 @@ RUN apk --no-cache --update --virtual build-dependencies add \
 
 
 RUN npm run tsc
+COPY /usr/src/server/.env /usr/src/server/dist/.env
 EXPOSE 8089
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "start:prod" ]
