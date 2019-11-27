@@ -1,9 +1,9 @@
 export class ExerciseDto {
-  readonly name: String | undefined;
+  readonly userId: String | undefined;
 
-  readonly icon: String | undefined;
+  readonly exerciseDictionaryId: String | undefined;
 
-  readonly description: String | undefined;
+  readonly weight: Number | undefined;
 
-  readonly defaultWeight: Number | undefined;
+  readonly repetitionCount: Number | undefined;
 }

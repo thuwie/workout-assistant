@@ -8,9 +8,10 @@ import { UserModule } from './user/user.module';
 import { TrainingModule } from './training/training.module';
 import { PresetModule } from './preset/preset.module';
 import { ExerciseModule } from './exercise/exercise.module';
+import { ExerciseDictionaryModule } from './exerciseDictionary/exerciseDictionary.module';
 
 @Module({
-  imports: [HealthModule, AuthModule, UserModule, TrainingModule, ExerciseModule, MongooseModule.forRootAsync({
+  imports: [HealthModule, AuthModule, UserModule, TrainingModule, ExerciseModule, ExerciseDictionaryModule, MongooseModule.forRootAsync({
     imports: [ConfigModule],
     inject: [ConfigService],
     useFactory: async (config: ConfigService) => ({

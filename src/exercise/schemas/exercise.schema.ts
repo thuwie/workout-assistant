@@ -1,8 +1,8 @@
 import { Schema } from 'mongoose';
 
 export const ExerciseSchema = new Schema({
-  name: String,
-  icon: String,
-  description: String,
-  defaultWeight: Number,
+  userId: { type: Schema.Types.ObjectId, ref: 'User' },
+  exerciseDictionaryId: { type: Schema.Types.ObjectId, ref: 'ExerciseDictionary' },
+  weight: Number,
+  repetitionCount: Number,
 });
