@@ -5,4 +5,6 @@ export const ExerciseDictionarySchema = new Schema({
   icon: String,
   description: String,
   defaultWeight: Number,
+  maximumWeight: Number,
+  weightStep: Number,
 });

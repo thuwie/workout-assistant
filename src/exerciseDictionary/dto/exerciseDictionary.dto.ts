@@ -6,4 +6,8 @@ export class ExerciseDictionaryDto {
   readonly description: String | undefined;
 
   readonly defaultWeight: Number | undefined;
+
+  readonly maximumWeight: Number | undefined;
+
+  readonly weightStep: Number | undefined;
 }
