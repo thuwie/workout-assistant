@@ -5,4 +5,6 @@ export interface ExerciseDictionary extends Document {
   readonly icon: String;
   readonly description: String;
   readonly defaultWeight: Number;
+  readonly maximumWeight: Number;
+  readonly weightStep: Number;
 }

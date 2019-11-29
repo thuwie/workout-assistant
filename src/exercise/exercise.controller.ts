@@ -14,7 +14,7 @@ export class ExerciseController {
 
   @Post()
   async create(@Body() exerciseDto: ExerciseDto) {
-    this.exerciseService.create(exerciseDto);
+    return this.exerciseService.create(exerciseDto);
   }
 
   @Get('all')
