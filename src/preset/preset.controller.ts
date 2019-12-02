@@ -16,7 +16,7 @@ export class PresetController {
   @UseGuards(AuthGuard('jwt'))
   @Post()
   async create(@Body() presetDto: PresetDto) {
-    this.presetService.create(presetDto);
+    return this.presetService.create(presetDto);
   }
 
   @UseGuards(AuthGuard('jwt'))
