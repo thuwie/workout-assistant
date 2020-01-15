@@ -16,7 +16,7 @@ export class TrainingController {
   @UseGuards(AuthGuard('jwt'))
   @Post()
   async create(@Body() trainingDto: TrainingDto) {
-    this.trainingService.create(trainingDto);
+    return this.trainingService.create(trainingDto);
   }
 
   @UseGuards(AuthGuard('jwt'))

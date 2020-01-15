@@ -14,7 +14,7 @@ export class ExerciseDictionaryController {
 
   @Post()
   async create(@Body() exerciseDto: ExerciseDictionaryDto) {
-    this.exerciseService.create(exerciseDto);
+    return this.exerciseService.create(exerciseDto);
   }
 
   @Get('all')
